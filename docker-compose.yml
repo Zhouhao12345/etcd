@@ -1,0 +1,8 @@
+etcd:
+   image: zhouhao123/etcd
+   ports:
+     - 4001:4001
+     - 2379:2379
+   volumes:
+     - ./volumes/etcd0:/etcd_data
+   command: -name etcd0 --data-dir /etcd_data -advertise-client-urls http://192.168.3.171:2379,http://192.168.3.171:4001 -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 -initial-advertise-peer-urls http://192.168.3.171:2380 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster etcd0=http://192.168.3.171:2380,etcd1=http://192.168.3.235:2380
